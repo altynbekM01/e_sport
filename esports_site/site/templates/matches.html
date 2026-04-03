@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+    <title>{{ seo_title }}</title>
+    <meta name="description" content="{{ seo_description }}">
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Esports Matches",
+      "url": "http://localhost"
+    }
+    </script>
+</head>
+<body>
+
+<h1>{{ page_name }} Matches</h1>
+
+<ul>
+    {% for match in matches %}
+        <li>
+            <strong>{{ match.name }}</strong><br>
+            League: {{ match.league }}<br>
+            Time: {{ match.begin_at }}
+        </li>
+    {% empty %}
+        <li>No matches found</li>
+    {% endfor %}
+</ul>
+
+<nav>
+    <a href="yesterday.html">Yesterday</a> |
+    <a href="today.html">Today</a> |
+    <a href="tomorrow.html">Tomorrow</a>
+</nav>
+
+</body>
+</html>
