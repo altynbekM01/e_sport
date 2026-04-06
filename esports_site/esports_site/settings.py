@@ -39,6 +39,10 @@ DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = ['e-sport-fby6.onrender.com']
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://e-sport-fby6.onrender.com",
+]
+
 
 # Application definition
 
