@@ -34,7 +34,17 @@ class Command(BaseCommand):
             }
 
             response = requests.get(base_url, headers=headers, params=params)
-            data = response.json()
+            
+
+            if response.status_code != 200:
+                self.stdout.write(self.style.ERROR(f"API error: {response.status_code}"))
+                data = []
+            else:
+                try:
+                    data = response.json()
+                except ValueError:
+                    self.stdout.write(self.style.ERROR("Failed to parse JSON from API"))
+                    data = []
 
 
 
