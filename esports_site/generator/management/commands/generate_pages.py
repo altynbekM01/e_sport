@@ -36,11 +36,16 @@ class Command(BaseCommand):
             response = requests.get(base_url, headers=headers, params=params)
             data = response.json()
 
+
+
             matches = []
             for match in data:
+                if not isinstance(match, dict):
+                    continue
+
                 matches.append({
                     "name": match.get("name"),
-                    "league": match.get("league", {}).get("name"),
+                    "league": (match.get("league") or {}).get("name"),
                     "begin_at": match.get("begin_at"),
                 })
 
